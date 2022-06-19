@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         SimpleFileReader simpleFileReader = new SimpleFileReader();  // считываем данные
         StatisticCalculator statisticCalculator = new StatisticCalculator();
+        MonthlyReportsCalculator monthlyReportsCalculator = new MonthlyReportsCalculator();
         List<MonthlyReport> monthlyReport = simpleFileReader.countAllMonthlyExpenses(); // месячный отчет
         YearlyReport yearlyReport = simpleFileReader.readAnnualReport(); // годовой отчет
 
@@ -21,18 +22,18 @@ public class Main {
                 simpleFileReader.readAnnualReport();
             } else if (command == 3) {
                 System.out.println("Сверяем отчеты.");
-                    statisticCalculator.verificationReports(monthlyReport, yearlyReport);
+                statisticCalculator.verificationReports(monthlyReport, yearlyReport);
             } else if (command == 4) {
                 if (monthlyReport != null) { // проверка на пустой отчет
                     System.out.println("Выводим информацию о всех месячных отчетах.");
-                        statisticCalculator.informationMonthlyReports(monthlyReport);
+                    monthlyReportsCalculator.informationMonthlyReports();
                 } else {
-                    System.out.println("Необходмо считать отчет за месяцы, нажмите цифру 1");
+                    System.out.println("Необходимо считать отчет за месяцы, нажмите цифру 1");
                 }
             } else if (command == 5) {
                 if (yearlyReport != null) { // проверка на пустой отчет
                     System.out.println("Выводим информацию о годовом отчете.");
-                    statisticCalculator.informationYearlyReports(yearlyReport);
+                    yearlyReport.informationYearlyReports();
                 } else {
                     System.out.println("Необходмо считать годовой отчет, нажмите цифру 2");
                 }

@@ -32,11 +32,11 @@ public class SimpleFileReader {
     // "1 - Считать все месячные отчеты"
     public List<MonthlyReport> countAllMonthlyExpenses() {
         List<MonthlyReport> monthlyReportList = new ArrayList<>();
-        SimpleFileReader reader = new SimpleFileReader();    // создаем объект класса чтения из файлов
+        //SimpleFileReader reader = new SimpleFileReader();    // создаем объект класса чтения из файлов
         // считываем три файла с месячным отчетом
         for (int i = 1; i <=3 ; i++) {
             MonthlyReport monthlyReport = new MonthlyReport();  // создаем объект класса месячного отчета
-            String contentMonthlyReport = reader.readFileContentsOrNull(MONTH_DATA_FILE_NAME + i + FILE_EXTENSION);
+            String contentMonthlyReport = this.readFileContentsOrNull(MONTH_DATA_FILE_NAME + i + FILE_EXTENSION);
             String[] monthlyLines = contentMonthlyReport.split(LINE_SEPARATOR); // сохраняем строки в массив разбивая по enter
             for (int j = 1; j < monthlyLines.length; j++) {     // исключаем заголовки
                 String monthlyLine = monthlyLines[j];           // сохраняем строку в
@@ -56,10 +56,10 @@ public class SimpleFileReader {
 
     // "2 - Считать годовой отчет"
     public YearlyReport readAnnualReport() {
-        SimpleFileReader reader= new SimpleFileReader();    // создаем объект класса чтения из файлов
+        //SimpleFileReader reader= new SimpleFileReader();    // создаем объект класса чтения из файлов
         YearlyReport yearlyReport = new YearlyReport();     // создаем объект класса годового отчета
         // считываем файл годового отчета
-        String contentYearlyReport = reader.readFileContentsOrNull(YEAR_DATA_FILE_NAME);
+        String contentYearlyReport = this.readFileContentsOrNull(YEAR_DATA_FILE_NAME);
         String[] yearlyLines = contentYearlyReport.split(LINE_SEPARATOR);
         for (int i = 1; i < yearlyLines.length; i++) {
             String yearlyLine = yearlyLines[i];

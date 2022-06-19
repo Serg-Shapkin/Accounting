@@ -1,3 +1,4 @@
+
 public class MonthlyReportRecord { // класс для чтения файла месячного отчете
     String itemName; // наименование товара
     boolean isExpense; // это расходы?
