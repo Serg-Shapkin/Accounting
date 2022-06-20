@@ -3,9 +3,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StatisticCalculator {
+public class Verification {
+    // вроде бы так, уверенности практически нет =)
+    SimpleFileReader simpleFileReader = new SimpleFileReader();
+    List<MonthlyReport> monthlyReports = simpleFileReader.countAllMonthlyExpenses();
+    YearlyReport yearlyReport = simpleFileReader.readAnnualReport();
 
-    public void verificationReports(List<MonthlyReport> monthlyReports, YearlyReport yearlyReport) {
+    public void verificationReports() {
         // для отчетов за каждый месяц
         List<Integer> listExpensesMonth = new ArrayList<>();   // список расходов в годовом отчете
         List<Integer> listIncomeMonth = new ArrayList<>();
@@ -18,12 +22,12 @@ public class StatisticCalculator {
         Map<Integer,String> listMonth = new HashMap();       // название месяца
 
         for (int i = 0; i < monthlyReports.size(); i++) {
-            MonthlyReport list = monthlyReports.get(i);
-            for (int j = 0; j < list.monthlyReportRecords.size(); j++) {
-                String itemName = monthlyReports.get(i).monthlyReportRecords.get(j).getItemName();
-                boolean isExpense = monthlyReports.get(i).monthlyReportRecords.get(j).getIsExpense();
-                int quantity = monthlyReports.get(i).monthlyReportRecords.get(j).getQuantity();
-                int sumOfOne = monthlyReports.get(i).monthlyReportRecords.get(j).getSumOfOne();
+            MonthlyReport report = monthlyReports.get(i);
+            for (int j = 0; j < report.monthlyReportRecords.size(); j++) {
+                String itemName = report.monthlyReportRecords.get(j).getItemName();
+                boolean isExpense = report.monthlyReportRecords.get(j).getIsExpense();
+                int quantity = report.monthlyReportRecords.get(j).getQuantity();
+                int sumOfOne = report.monthlyReportRecords.get(j).getSumOfOne();
 
                 if (isExpense) {
                     sumExpensesMonth += quantity * sumOfOne;

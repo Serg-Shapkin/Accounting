@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         SimpleFileReader simpleFileReader = new SimpleFileReader();  // считываем данные
-        StatisticCalculator statisticCalculator = new StatisticCalculator();
+        Verification verification = new Verification();
         MonthlyReportsCalculator monthlyReportsCalculator = new MonthlyReportsCalculator();
         List<MonthlyReport> monthlyReport = simpleFileReader.countAllMonthlyExpenses(); // месячный отчет
         YearlyReport yearlyReport = simpleFileReader.readAnnualReport(); // годовой отчет
@@ -22,7 +22,7 @@ public class Main {
                 simpleFileReader.readAnnualReport();
             } else if (command == 3) {
                 System.out.println("Сверяем отчеты.");
-                statisticCalculator.verificationReports(monthlyReport, yearlyReport);
+                verification.verificationReports();
             } else if (command == 4) {
                 if (monthlyReport != null) { // проверка на пустой отчет
                     System.out.println("Выводим информацию о всех месячных отчетах.");

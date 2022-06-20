@@ -18,13 +18,13 @@ public class MonthlyReportsCalculator {
         listMonth.put(3,"Март");
 
         for (int i = 0; i < monthlyReports.size(); i++) {
-            MonthlyReport list = monthlyReports.get(i);
+            MonthlyReport report = monthlyReports.get(i);
             monthNumber++;
-            for (int j = 0; j < list.monthlyReportRecords.size(); j++) {
-                String itemName = monthlyReports.get(i).monthlyReportRecords.get(j).getItemName();
-                boolean isExpense = monthlyReports.get(i).monthlyReportRecords.get(j).getIsExpense();
-                int quantity = monthlyReports.get(i).monthlyReportRecords.get(j).getQuantity();
-                int sumOfOne = monthlyReports.get(i).monthlyReportRecords.get(j).getSumOfOne();
+            for (int j = 0; j < report.monthlyReportRecords.size(); j++) {
+                String itemName = report.monthlyReportRecords.get(j).getItemName();
+                boolean isExpense = report.monthlyReportRecords.get(j).getIsExpense();
+                int quantity = report.monthlyReportRecords.get(j).getQuantity();
+                int sumOfOne = report.monthlyReportRecords.get(j).getSumOfOne();
 
                 if (!isExpense) {
                     if (quantity * sumOfOne > maxSum) {
