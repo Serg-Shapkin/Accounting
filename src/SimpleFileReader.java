@@ -8,8 +8,8 @@ import java.util.List;
 // класс для чтения из файлов отчетов
 public class SimpleFileReader {
 
-    private static final String MONTH_DATA_FILE_NAME = "resources/m.20210"; // константа с расположением файла месячного
-    // отчета без последней цифры и расширения
+    // константа с расположением файла месячного отчета без последней цифры и расширения
+    private static final String MONTH_DATA_FILE_NAME = "resources/m.20210";
     private static final String FILE_EXTENSION = ".csv"; // константа расширения файла
 
     private static final String YEAR_DATA_FILE_NAME = "resources/y.2021.csv";    // константа с располоением файла годового отчета
@@ -18,7 +18,7 @@ public class SimpleFileReader {
 
     // для месячного отчета
     private static final int ITEM_NAME_INDEX = 0;       // константа номера ячейки с наименованием товара
-    private static final int IS_EXPENSE_THIS_MONTH = 1; // константа номера ячейки с с расход - true/доход - false
+    private static final int IS_EXPENSE_THIS_MONTH = 1; // константа номера ячейки с расход - true/доход - false
     private static final int QUANTITY = 2;              // константа номера ячейки с количеством товара
     private static final int SUM_OF_ONE = 3;            // константа номера ячейки со стоимостью за единицу
 
@@ -74,12 +74,12 @@ public class SimpleFileReader {
         return yearlyReport;
     }
 
-    public String readFileContentsOrNull(String path) {
+    private String readFileContentsOrNull(String path) {
         try {
             return Files.readString(Path.of(path));
         } catch (IOException e) {
-            System.out.println("Невозможно прочитать файл с месячным отчётом. " +
-                    "Возможно, файл не находится в нужной директории.");
+            System.out.println("Невозможно прочитать файл с месячным/годовым отчётом. " +
+                    "Возможно файл не находится в нужной директории.");
             return null;
         }
     }
